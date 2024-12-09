@@ -1,11 +1,19 @@
-function [scores] = shangzhifa(data)
-%SHANGZHIFA 此处显示有关此函数的摘要
-%   此处显示详细说明
-% 假设有 4 种方案，3 个指标
-    %data = [100 80 90;   % 方案1
-     %       150 70 60;  % 方案2
-      %      150 70 60;  % 方案3
-       %     80  90 100];   % 方案4
+function [scores] = wp_entropy(data)
+%  wp_entropy   该函数用于根据不同方案与指标进行熵值法计算.
+%
+%  WARNING: data输入数据必须以规定格式存储。
+%
+%  input:
+%        data   - 输入数据矩阵，行为方案数，列为指标数
+%  output:
+%        scores - 返回不同方案对应的得分数
+%
+%  此处显示详细说明:
+%       假设有 4 种方案，3 个指标
+%       data = [100 80 90;      % 方案1
+%               150 70 60;      % 方案2
+%               150 70 60;      % 方案3
+%               80  90 100];    % 方案4
     
     % 步骤 1：标准化决策矩阵
     [m, n] = size(data);
@@ -42,7 +50,6 @@ function [scores] = shangzhifa(data)
     % 显示结果
     disp('每个方案的综合得分:');
     disp(scores);
-
 
 end
 
