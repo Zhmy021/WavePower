@@ -6,8 +6,7 @@ function [power_function] = getWEC(ExcelFilePath, WEC_Name)
     r = excel_file(1, 1);
     l = excel_file(1, 2);
     
-    
-    % 读取数据
+    % 读取数据l
     X_grid = excel_file(1, 3:3+r-1);
     Y_grid = excel_file(2:l+1, 2);
     Z = excel_file(2:l+1, 3:3+r-1);
