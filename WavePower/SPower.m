@@ -1,24 +1,12 @@
 clear;clc;close all;
+addpath('../CommonMethodology/');
+addpath('E:\张明阳\项目\SWAN_Taiwan_result');
 %% 1. 读取网格坐标数据
+[lon,lat,depth] = wp_readGird('fort2022.txt',10613);
 
-% 读取位置数据
-address_data = importdata('fort2022.txt');
-addresstxtData = address_data.data; 
-txtData = addresstxtData(2:10614, :);
-
-% 读取经纬度坐标
-lon = txtData(:, 2);
-lat = txtData(:, 3);
-depth = txtData(:, 4);
-
-clear address_data addresstxtData txtData
 %% 2. 读取SWAN计算数据
-
-SWH_2015 = readmattodata("E:\张明阳\SWAN_Taiwan_result\te_ST6_S6_2015.mat",1);
-PERIOD_2015 = readmattodata("E:\张明阳\SWAN_Taiwan_result\te_ST6_S6_2015.mat",5);
-
-SWH_2014 = readmattodata("E:\张明阳\SWAN_Taiwan_result\te_ST6_S6_2014.mat",1);
-PERIOD_2014 = readmattodata("E:\张明阳\SWAN_Taiwan_result\te_ST6_S6_2014.mat",5);
+SWAN_SWH = wp_readMatCus("E:\张明阳\项目\SWAN_Taiwan_result\te_ST6_S6_2015.mat",1,8760,10613);
+SWAN_PERIOD = wp_readMatCus("E:\张明阳\项目\SWAN_Taiwan_result\te_ST6_S6_2015.mat",5,8760,10613);
 
 %% 3. 计算SWAN数据
 

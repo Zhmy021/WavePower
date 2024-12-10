@@ -1,4 +1,4 @@
-function result = wp_readMat(filename, pointadress,KIND)
+function result = wp_readMat(filename,pointadress,KIND)
 %  wp_readMat   该函数用于从SWAN模型输出的mat文件中读取数据
 %               并查找特定点的特定属性值的时间序列矩阵.
 %
