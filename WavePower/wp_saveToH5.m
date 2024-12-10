@@ -5,7 +5,7 @@ function [outputArg1,outputArg2] = wp_saveToH5(inputArg1,inputArg2)
 EXCEL_FILE_PATH = "C:\Users\zmyzq\Desktop\WEC种类参数.xlsx";
 WEC_LIST = {'Pontoon','SeaPower','Langlee','OE_buoy','AquaBuOY','Wavebob','Pelamis','AWS'};
 block_size = 8760;
-years = 10;  
+years = 10;  %急急急急急急
 
 for start_row = 1:block_size:8760*years
 
