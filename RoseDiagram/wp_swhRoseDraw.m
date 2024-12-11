@@ -2,11 +2,7 @@ function [] = wp_swhRoseDraw(SwanFileFolderPath)
 %%  读取SWAN计算数据
 % BSG 9358 DSN 2027
 addpath('../CommonMethodology/');
-
 %"E:\张明阳\项目\SWAN_Taiwan_result\te_ST6_S6_2022.mat"
-files = dir(SwanFileFolderPath);
-filePaths = {};
-
 m1D = [];
 m2D = [];
 m3D = [];
@@ -18,15 +14,7 @@ m4S = [];
 SWHall = [];
 DIRall = [];
 
-for i = 1:length(files)
-    % 检查是否是文件（排除 '.' 和 '..' 目录）
-    if ~files(i).isdir
-        % 构建完整的文件路径
-        fullPath = fullfile(SwanFileFolderPath, files(i).name);
-        % 存储到 cell 数组
-        filePaths{end+1} = fullPath; % 或者使用 filePaths = [filePaths; {fullPath}];
-    end
-end
+filePaths = wp_iterateFolder(SwanFileFolderPath);
 
 for year = 1:length(filePaths)
     % BSG 9358 DSN 2027
