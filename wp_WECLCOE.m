@@ -31,7 +31,7 @@ function [] = wp_WECLCOE(inputArg1,inputArg2)
 % 它表示在项目的整个生命周期内，每年需要支付的固定费用占总投资的比例。
 % 固定费用通常包括利息、折旧、摊销和保险等。
 % FCR = 年固定费用/初始投资
-% 年固定费用 = 利息 + 折旧 + 摊销 +保 险
+% 年固定费用 = 利息 + 折旧 + 摊销 +保险
 
 % CAPEX （Capital Expenditure，资本支出）
 % 指的是企业在固定资产（如设备、建筑物、基础设施等）上的投资。
@@ -83,10 +83,22 @@ GCC = OffSpurCost
 % Calculated Rate of Return on Equity Real 0.076
 %%
 
+CapEx = 1.5 * 0.75; % 资本支出
+OpEx = CapEx * 0.1; % 运营支出
+PV = 20;            % WEC服役年限
 
-% CapEx = 1.5 * 0.75;
-% PV = 20;
-% OpEx = CapEx * 0.1;
+OpExs = 0;
+AEP = WEC*8760;
+AEPs = zeros(1, 10613);
+
+for i = 1:1:PV
+    OpExs = OpExs + OpEx/((1+r)^i);
+    AEPs = AEPs + AEP./((1+r)^i);
+end
+LCOE = (1000000*(CapEx+OpExs))./AEPs*1000;
+LCOE(LCOE>1000) = NaN;
+
+
 % OpExs = 0;
 % AEP = WEC*8760;
 % AEPs = zeros(1, 10613);
